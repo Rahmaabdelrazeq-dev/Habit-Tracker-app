@@ -20,12 +20,14 @@ interface CreateHabitDialogProps {
 }
 
 const PRESET_COLORS = [
-  "#A0826D", // Warm Brown (default)
-  "#7C9473", // Success Green
-  "#D4A574", // Warning Orange
-  "#C17767", // Error Red
-  "#8B8680", // Neutral Gray
-  "#6B5444", // Deep Brown
+  "#10B981", // Emerald green (default)
+  "#8B5CF6", // Purple
+  "#F59E0B", // Orange
+  "#3B82F6", // Blue
+  "#EF4444", // Red
+  "#EC4899", // Pink
+  "#14B8A6", // Teal
+  "#F97316", // Deep orange
 ];
 
 const CreateHabitDialog = ({ open, onOpenChange, onHabitCreated }: CreateHabitDialogProps) => {

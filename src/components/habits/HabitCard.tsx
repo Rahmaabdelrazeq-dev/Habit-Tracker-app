@@ -106,53 +106,70 @@ const HabitCard = ({ habit, isCompletedToday, onToggle, onUpdate }: HabitCardPro
   return (
     <div
       className={cn(
-        "bg-card rounded-xl p-6 border-l-4 shadow-sm hover:shadow-md transition-all duration-200",
-        isCompletedToday ? "border-l-success" : "border-l-muted"
+        "bg-card rounded-xl p-6 border-2 shadow-sm hover:shadow-lg transition-all duration-300 relative overflow-hidden group",
+        isCompletedToday ? "border-success bg-success/5" : "border-border hover:border-primary/50"
       )}
-      style={{
-        borderLeftColor: isCompletedToday ? undefined : habit.color,
-      }}
     >
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex-1">
-          <h3 className="font-semibold text-lg mb-1">{habit.name}</h3>
-          {habit.description && (
-            <p className="text-sm text-muted-foreground">{habit.description}</p>
-          )}
+      {/* Gradient overlay on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
+      <div className="relative z-10">
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1">
+              <div 
+                className="w-3 h-3 rounded-full" 
+                style={{ backgroundColor: habit.color }}
+              />
+              <h3 className="font-semibold text-lg">{habit.name}</h3>
+            </div>
+            {habit.description && (
+              <p className="text-sm text-muted-foreground">{habit.description}</p>
+            )}
+          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="h-8 w-8 -mt-1">
+                <MoreVertical className="w-4 h-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={handleDelete} className="text-destructive">
+                <Trash2 className="w-4 h-4 mr-2" />
+                Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
-              <MoreVertical className="w-4 h-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={handleDelete} className="text-destructive">
-              <Trash2 className="w-4 h-4 mr-2" />
-              Delete
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
 
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Flame className="w-4 h-4" />
-          <span>Streak: 0 days</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 text-sm font-medium">
+              <Flame className={cn(
+                "w-5 h-5",
+                isCompletedToday ? "text-accent animate-pulse" : "text-muted-foreground"
+              )} />
+              <span className={cn(
+                isCompletedToday ? "text-accent" : "text-muted-foreground"
+              )}>
+                0 day streak
+              </span>
+            </div>
+          </div>
+          <Button
+            onClick={handleToggle}
+            disabled={toggling}
+            size="sm"
+            variant={isCompletedToday ? "default" : "outline"}
+            className={cn(
+              "transition-all duration-200 min-w-[80px]",
+              isCompletedToday && "bg-success hover:bg-success/90 animate-check-bounce"
+            )}
+          >
+            <Check className={cn("w-4 h-4", isCompletedToday && "mr-2")} />
+            {isCompletedToday ? "Done" : ""}
+          </Button>
         </div>
-        <Button
-          onClick={handleToggle}
-          disabled={toggling}
-          size="sm"
-          variant={isCompletedToday ? "secondary" : "default"}
-          className={cn(
-            "transition-all duration-200",
-            isCompletedToday && "animate-check-bounce"
-          )}
-        >
-          <Check className={cn("w-4 h-4", isCompletedToday && "mr-2")} />
-          {isCompletedToday && "Done"}
-        </Button>
       </div>
     </div>
   );

@@ -42,17 +42,17 @@ const Index = () => {
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
             <Flame className="w-10 h-10 text-primary" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Build Better Habits
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            Build Better Habits Daily
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Simple habit tracking for a better you. Track your daily habits with beautiful,
-            minimalist design that keeps you focused on what matters.
+            Transform your life with Habit Tracker. Beautiful, intuitive tracking to build 
+            positive routines and achieve your goals, one day at a time.
           </p>
           <Button
             size="lg"
             onClick={() => navigate("/auth")}
-            className="text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all"
+            className="text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all bg-gradient-to-r from-primary to-secondary hover:opacity-90"
           >
             Get Started Free
           </Button>
@@ -134,7 +134,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-border bg-card/50 py-8">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>© 2025 HabitFlow. Built with care for better habits.</p>
+          <p>© 2025 Habit Tracker. Built with care for better habits.</p>
         </div>
       </footer>
     </div>

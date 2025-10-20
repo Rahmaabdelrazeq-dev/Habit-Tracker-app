@@ -84,7 +84,7 @@ const Auth = () => {
 
         toast({
           title: "Account created!",
-          description: "Welcome to HabitFlow. Let's build better habits together.",
+          description: "Welcome to Habit Tracker. Let's build better habits together.",
         });
         navigate("/dashboard");
       }
@@ -106,7 +106,7 @@ const Auth = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
             <Flame className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="text-3xl font-bold mb-2">HabitFlow</h1>
+          <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Habit Tracker</h1>
           <p className="text-muted-foreground">Build better habits, one day at a time</p>
         </div>
 
